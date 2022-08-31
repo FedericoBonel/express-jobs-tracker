@@ -1,38 +1,30 @@
 const { StatusCodes } = require("http-status-codes");
 
-const { BadRequestError, UnauthorizedError } = require("../errors");
+const {
+    ServerError,
+} = require("../errors");
 const { SuccessPayload } = require("../payloads");
+const { createUser, authenticateUser } = require("../services/UserService");
 
 const register = async (req, res) => {
-    const { username, password } = req.body;
+    const newUser = req.body;
 
-    if (!(username && password)) {
-        throw new BadRequestError(
-            `Expected username and password in request body`
-        );
+    const savedUser = await createUser(newUser);
+
+    if (!savedUser) {
+        throw new ServerError("Something went wrong!");
     }
 
-    // Register the user in db
-    const newUser = {};
-
-    res.status(StatusCodes.OK).json(new SuccessPayload(newUser));
+    res.status(StatusCodes.CREATED).json(new SuccessPayload(savedUser));
 };
 
 const login = async (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    if (!(username && password)) {
-        throw new BadRequestError(
-            `Expected username and password in request body`
-        );
-    }
-
-    // call to loginService(username, password) checks if username exists and password match
-    // if so, returns a new token, otherwhise returns an undefined value
-    const verified = { token: "asdasdsa sample only" };
+    const verified = await authenticateUser(email, password);
 
     if (!verified) {
-        throw new UnauthorizedError();
+        throw new ServerError("Something went wrong!");
     }
 
     res.status(StatusCodes.OK).json(new SuccessPayload(verified));
