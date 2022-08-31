@@ -2,11 +2,11 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const { BadRequestError, UnauthorizedError } = require("../errors");
-const { create, getUserBy } = require("../repositories/UserRepository");
+const { create, getBy } = require("../repositories/UserRepository");
 
 const createUser = async (user) => {
     // Check if user with pass already exists
-    const existingUser = await getUserBy({ email: user.email });
+    const existingUser = await getBy({ email: user.email });
 
     if (existingUser) {
         throw new BadRequestError("User with that email already exists");
@@ -20,21 +20,16 @@ const createUser = async (user) => {
     return { name: savedUser.name, email: savedUser.email };
 };
 
-const authenticateUser = async (email, password) => {
+const authenticateUserDetails = async (email, password) => {
     // Validate the user exists and it's decrypted password is valid
-    const existingUser = await getUserBy({ email: email });
+    const savedUser = await getBy({ email: email });
 
-    if (
-        !(
-            existingUser &&
-            (await bcrypt.compare(password, existingUser.password))
-        )
-    ) {
+    if (!(savedUser && (await bcrypt.compare(password, savedUser.password)))) {
         throw new UnauthorizedError("Wrong email and/or password");
     }
 
-    // Generate a unique token
-    return token = generateToken(existingUser);
+    // Generate a unique token and return it
+    return generateToken(savedUser);
 };
 
 const generateToken = (user) => {
@@ -45,4 +40,4 @@ const generateToken = (user) => {
     );
 };
 
-module.exports = { createUser, authenticateUser };
+module.exports = { createUser, authenticateUserDetails };

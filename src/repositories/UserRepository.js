@@ -4,8 +4,8 @@ const create = async (user) => {
     return await UserModel.create(user);
 };
 
-const getUserBy = async (filters) => {
+const getBy = async (filters) => {
     return await UserModel.findOne(filters);
 };
 
-module.exports = { create, getUserBy };
+module.exports = { create, getBy };

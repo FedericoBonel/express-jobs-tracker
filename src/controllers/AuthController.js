@@ -1,10 +1,11 @@
 const { StatusCodes } = require("http-status-codes");
 
-const {
-    ServerError,
-} = require("../errors");
+const { ServerError } = require("../errors");
 const { SuccessPayload } = require("../payloads");
-const { createUser, authenticateUser } = require("../services/UserService");
+const {
+    createUser,
+    authenticateUserDetails,
+} = require("../services/UserService");
 
 const register = async (req, res) => {
     const newUser = req.body;
@@ -21,7 +22,7 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     const { email, password } = req.body;
 
-    const verified = await authenticateUser(email, password);
+    const verified = await authenticateUserDetails(email, password);
 
     if (!verified) {
         throw new ServerError("Something went wrong!");
