@@ -1,6 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
 
 const { SuccessPayload } = require("../payloads");
+// const 
 
 const getAllJobs = async (req, res) => {
     const allJobs = [];

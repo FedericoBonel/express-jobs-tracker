@@ -17,7 +17,7 @@ const createUser = async (user) => {
     const savedUser = await create(user);
 
     // Return public information to validate registration
-    return { name: savedUser.name, email: savedUser.email };
+    return { _id: user._id, name: savedUser.name, email: savedUser.email };
 };
 
 const authenticateUserDetails = async (email, password) => {
@@ -34,7 +34,7 @@ const authenticateUserDetails = async (email, password) => {
 
 const generateToken = (user) => {
     return jwt.sign(
-        { name: user.name, email: user.email },
+        { _id: user, name: user.name, email: user.email },
         process.env.JWT_SECRET,
         { expiresIn: "30d" }
     );
