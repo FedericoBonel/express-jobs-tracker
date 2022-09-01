@@ -1,10 +1,16 @@
-const jobsModel = require("../models/Jobs");
+const jobsModel = require("../models/Job");
 
-const getAllFor = async (user) => {
+const getAllBy = async (filters) => {
     const jobs = await jobsModel
-        .find({ createdBy: user })
-        .populate("createdBy");
+        .find(filters)
+        .populate("createdBy")
+        .sort("createdAt");
+
+    jobs.forEach((job) => {
+        const { password, ...user } = job.createdBy;
+        job.createdBy = user;
+    });
     return jobs;
 };
 
-module.exports = { getAllFor };
+module.exports = { getAllBy };

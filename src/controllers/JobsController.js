@@ -1,16 +1,20 @@
 const { StatusCodes } = require("http-status-codes");
 
 const { SuccessPayload } = require("../payloads");
-// const 
+const { findAllJobs, findJobById } = require("../services/JobsService");
 
 const getAllJobs = async (req, res) => {
-    const allJobs = [];
+    const { _id: userId } = req.user;
+    const allJobs = await findAllJobs(userId);
     res.status(StatusCodes.OK).json(new SuccessPayload(allJobs));
 };
 
 const getJobById = async (req, res) => {
-    const { jobId } = req.params;
-    res.status(StatusCodes.OK).json(new SuccessPayload(jobId));
+    const { _id: userId } = req.user;
+    const { id } = req.params;
+
+    const job = await findJobById(userId, id);
+    res.status(StatusCodes.OK).json(new SuccessPayload(job));
 };
 
 const createJob = async (req, res) => {
@@ -19,8 +23,8 @@ const createJob = async (req, res) => {
 };
 
 const deleteJob = async (req, res) => {
-    const { jobId } = req.params;
-    res.status(StatusCodes.OK).json(new SuccessPayload(jobId));
+    const { id } = req.params;
+    res.status(StatusCodes.OK).json(new SuccessPayload(id));
 };
 
 const updateJob = async (req, res) => {
