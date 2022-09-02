@@ -18,7 +18,6 @@ const getAllJobs = async (req, res) => {
 
 const getJobById = async (req, res) => {
     const { _id: userId } = req.user;
-    console.log(userId);
     const { id } = req.params;
 
     const job = await findJobById(userId, id);

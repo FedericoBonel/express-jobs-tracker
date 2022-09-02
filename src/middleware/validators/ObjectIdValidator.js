@@ -1,7 +1,4 @@
-const { body, param } = require("express-validator");
 const { Types } = require("mongoose");
-
-const validateResult = require("./ValidateResults");
 const { NotFoundError } = require("../../errors");
 
 const validateId = (req, res, next) => {

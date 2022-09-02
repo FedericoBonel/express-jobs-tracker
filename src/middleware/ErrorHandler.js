@@ -1,16 +1,18 @@
-const { StatusCodes, ReasonPhrases } = require("http-status-codes");
-
-const { ApiError } = require("../errors");
+const { StatusCodes } = require("http-status-codes");
 const { ErrorPayload } = require("../payloads");
 
 const errorHandler = async (err, req, res, next) => {
-    if (err instanceof ApiError) {
-        return res.status(err.status).json(new ErrorPayload(err.message));
+
+    const customError = {
+        status: err.status || StatusCodes.INTERNAL_SERVER_ERROR,
+        message: err.message || "Something went wrong please try again"
+    };
+
+    if (err.code && err.code === 11000) {
+        customError.message = `Duplicated value for ${Object.keys(err.keyValue)}, please choose another value`;
     }
 
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(
-        new ErrorPayload(err.message || ReasonPhrases.INTERNAL_SERVER_ERROR)
-    );
+    res.status(customError.status).json(new ErrorPayload(customError.message));
 };
 
 module.exports = errorHandler;
