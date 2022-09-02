@@ -9,12 +9,17 @@ const {
 } = require("../controllers/JobsController");
 const authenticate = require("../middleware/Auth");
 const validateId = require("../middleware/validators/ObjectIdValidator");
-
+const { validateJobSchema } = require("../middleware/validators/JobValidator");
 
 const jobsRoutes = Router();
 
 jobsRoutes.use(authenticate);
-jobsRoutes.route("/").get(getAllJobs).post(createJob);
-jobsRoutes.route("/:id").all(validateId).get(getJobById).patch(updateJob).delete(deleteJob);
+jobsRoutes.route("/").get(getAllJobs).post(validateJobSchema, createJob);
+jobsRoutes
+    .route("/:id")
+    .all(validateId)
+    .get(getJobById)
+    .put(validateJobSchema, updateJob)
+    .delete(deleteJob);
 
 module.exports = jobsRoutes;

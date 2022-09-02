@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const jobStatus = ["interview", "declined", "pending"];
+
 const jobsSchema = new mongoose.Schema(
     {
         company: {
@@ -16,7 +18,7 @@ const jobsSchema = new mongoose.Schema(
         },
         status: {
             type: String,
-            enum: ["interview", "declined", "pending"],
+            enum: jobStatus,
             default: "pending",
         },
         createdBy: {
@@ -30,4 +32,4 @@ const jobsSchema = new mongoose.Schema(
 
 const jobsModel = mongoose.model("Job", jobsSchema);
 
-module.exports = jobsModel;
+module.exports = { jobsModel, jobStatus };

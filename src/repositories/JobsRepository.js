@@ -1,16 +1,25 @@
-const jobsModel = require("../models/Job");
+const { jobsModel } = require("../models/Job");
 
 const getAllBy = async (filters) => {
-    const jobs = await jobsModel
-        .find(filters)
-        .populate("createdBy")
-        .sort("createdAt");
-
-    jobs.forEach((job) => {
-        const { password, ...user } = job.createdBy;
-        job.createdBy = user;
-    });
-    return jobs;
+    return await jobsModel.find(filters).sort("createdAt");
 };
 
-module.exports = { getAllBy };
+const create = async (job) => {
+    return await jobsModel.create(job);
+};
+
+const deleteOneBy = async (filters) => {
+    const deleteResult = await jobsModel.findOneAndDelete(filters);
+
+    return deleteResult;
+};
+
+const updateOneBy = async (filters, changes) => {
+    const updatedJob = await jobsModel.findOneAndUpdate(filters, changes, {
+        new: true,
+    });
+
+    return updatedJob;
+};
+
+module.exports = { getAllBy, create, deleteOneBy, updateOneBy };
