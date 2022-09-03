@@ -21,7 +21,7 @@ jobsRoutes
     .route("/:id")
     .all(validateId)
     .get(getJobById)
-    .put(validateJobSchema, updateJob)
+    .patch(validateJobSchema, updateJob)
     .delete(deleteJob);
 
 module.exports = jobsRoutes;
