@@ -13,7 +13,9 @@ const { validateJobSchema } = require("../middleware/validators/JobValidator");
 
 const jobsRoutes = Router();
 
+// Authenticate every user of this route
 jobsRoutes.use(authenticate);
+
 jobsRoutes.route("/").get(getAllJobs).post(validateJobSchema, createJob);
 jobsRoutes
     .route("/:id")

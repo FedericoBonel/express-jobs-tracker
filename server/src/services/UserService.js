@@ -21,7 +21,7 @@ const createUser = async (user) => {
 };
 
 const authenticateUserDetails = async (email, password) => {
-    // Validate the user exists and it's decrypted password is valid
+    // Validate the user exists and its decrypted password is valid
     const savedUser = await getBy({ email: email });
 
     if (!(savedUser && (await bcrypt.compare(password, savedUser.password)))) {
@@ -29,7 +29,10 @@ const authenticateUserDetails = async (email, password) => {
     }
 
     // Generate a unique token and return it
-    return generateToken(savedUser);
+    return {
+        user: { name: savedUser.name, email: savedUser.email },
+        token: generateToken(savedUser),
+    };
 };
 
 const generateToken = (user) => {
