@@ -1,6 +1,9 @@
 const { body } = require("express-validator");
 const validateResult = require("./ValidateResults");
 
+/**
+ * Set of rules that validates a User schema
+ */
 const validateUserSchema = [
     body("name")
         .isString()
@@ -12,6 +15,9 @@ const validateUserSchema = [
     validateResult,
 ];
 
+/**
+ * Set of rules that validates a Login payload request
+ */
 const validateLoginBody = [
     body("password").isString().withMessage("Please provide a password"),
     body("email").isEmail().withMessage("Please provide a valid email"),

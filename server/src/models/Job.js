@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const jobStatus = ["interview", "declined", "pending"];
+const jobStatus = ["interview", "declined", "pending", "got offer", "accepted offer"];
 
 const jobsSchema = new mongoose.Schema(
     {

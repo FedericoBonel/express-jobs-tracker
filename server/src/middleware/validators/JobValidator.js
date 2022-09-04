@@ -3,6 +3,9 @@ const { body } = require("express-validator");
 const validateResults = require("./ValidateResults");
 const { jobStatus } = require("../../models/Job");
 
+/**
+ * Set of middleware that validates a Job schema
+ */
 const validateJobSchema = [
     body("company")
         .isString()
