@@ -1,8 +1,24 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const { BadRequestError, UnauthorizedError } = require("../errors");
+const { BadRequestError, UnauthorizedError, NotFoundError } = require("../errors");
 const { create, getBy } = require("../repositories/UserRepository");
+
+/**
+ * Gets a user by id 
+ * @param {String} id Id of the desired user
+ * @throws {NotFoundError} In case that the user does not exist in database
+ * @returns The user with the matching id
+ */
+const getUserById = async (id) => {
+    const existingUser = await getBy({_id: id});
+
+    if (!existingUser) {
+        throw new NotFoundError(`User with id ${id} not found`);
+    }
+
+    return existingUser;
+}
 
 /**
  * Registers the passed user to the database with an encrypted password
@@ -67,4 +83,4 @@ const generateTokenFor = (user) => {
     );
 };
 
-module.exports = { createUser, authenticateUserDetails };
+module.exports = { createUser, authenticateUserDetails, getUserById };

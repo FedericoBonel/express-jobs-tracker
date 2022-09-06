@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 
+const { getUserById } = require("../services/UserService");
 const { UnauthorizedError, BadRequestError } = require("../errors");
 
 /**
@@ -10,7 +11,9 @@ const authenticateJWT = async (req, res, next) => {
     const token = req.headers.authorization;
 
     if (!(token && token.startsWith("Bearer "))) {
-        throw new BadRequestError("Web Token must be provided in 'authorization: Bearer ' schema");
+        throw new BadRequestError(
+            "Web Token must be provided in 'authorization: Bearer ' schema"
+        );
     }
 
     // Extract token and verify it going to next middleware if correct
@@ -18,6 +21,10 @@ const authenticateJWT = async (req, res, next) => {
 
     try {
         const payload = jwt.verify(hashedToken, process.env.JWT_SECRET);
+
+        // Check if the user does really exists in db
+        await getUserById(payload._id);
+
         req.user = payload;
         next();
     } catch (error) {

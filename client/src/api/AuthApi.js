@@ -1,4 +1,4 @@
-const AUTH_URI = "http://localhost:5000/api/v1/auth/login";
+const AUTH_URI = "http://localhost:5000/api/v1/auth";
 
 /**
  * Authenticates user information and returns response status and response payload
@@ -6,7 +6,7 @@ const AUTH_URI = "http://localhost:5000/api/v1/auth/login";
  */
 const authenticate = async (userInformation) => {
     try {
-        const response = await fetch(AUTH_URI, {
+        const response = await fetch(`${AUTH_URI}/login`, {
             headers: {
                 "content-type": "application/json",
             },
@@ -20,8 +20,31 @@ const authenticate = async (userInformation) => {
             data: success ? data : null,
         };
     } catch (err) {
-        console.log(err);
+        console.log(`Error while authenticating: ${err}`);
     }
 };
 
-export { authenticate };
+const registerUser = async (user) => {
+    try {
+        const response = await fetch(`${AUTH_URI}/register`, {
+            headers: {
+                accept: "application/json",
+                "content-type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify(user),
+        });
+
+        const responseStatus = response.status;
+        const { data } = await response.json();
+
+        return {
+            status: responseStatus,
+            data: responseStatus === 201 ? data : null,
+        };
+    } catch (error) {
+        console.log(`Error while registering new user: ${error}`);
+    }
+};
+
+export { authenticate, registerUser };

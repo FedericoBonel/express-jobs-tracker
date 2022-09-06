@@ -1,6 +1,8 @@
+import { memo } from "react";
+
 import "./JobExcerpt.css";
 
-const JobExcerpt = ({ job, onDelete }) => {
+let JobExcerpt = ({ job, onDelete }) => {
     const date = new Date(job.createdAt);
     const stringDate = `${date.toUTCString().substring(0, 16)}`;
 
@@ -23,4 +25,4 @@ const JobExcerpt = ({ job, onDelete }) => {
     );
 };
 
-export default JobExcerpt;
+export default memo(JobExcerpt);
