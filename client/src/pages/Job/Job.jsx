@@ -23,9 +23,9 @@ const Job = () => {
                 invalidateUser();
             } else if (status === 404) {
                 setJob({ state: "idle", data: {} });
-                navigate("/error");
+                navigate("/error/404");
             } else {
-                alert("Unknown error");
+                navigate(`/error/${status}`);
             }
         };
 
@@ -50,7 +50,7 @@ const Job = () => {
         } else if (status === 401) {
             invalidateUser();
         } else {
-            alert("Unknown error");
+            navigate(`/error/${status}`);
         }
     };
 

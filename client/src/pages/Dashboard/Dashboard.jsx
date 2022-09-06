@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./Dashboard.css";
 import { UserContext } from "../../context/Context";
@@ -7,6 +8,7 @@ import JobList from "../../components/JobList/JobList";
 import { getAllJobs, deleteJobById, createJob } from "../../api/JobsApi";
 
 const Dashboard = () => {
+    const navigate = useNavigate();
     const { user, invalidateUser } = useContext(UserContext);
     const [jobs, setJobs] = useState({
         status: "idle",
@@ -17,18 +19,18 @@ const Dashboard = () => {
         const fetchAllJobs = async () => {
             setJobs((prevJob) => ({ ...prevJob, status: "loading" }));
 
-            const allJobs = await getAllJobs(user.token);
+            const { status, data } = await getAllJobs(user.token);
 
-            if (allJobs.status === 200) {
-                setJobs({ status: "idle", data: allJobs.data });
-            } else if (allJobs.status === 401) {
+            if (status === 200) {
+                setJobs({ status: "idle", data: data });
+            } else if (status === 401) {
                 invalidateUser();
             } else {
-                setJobs((prevJobs) => ({ ...prevJobs, status: "error" }));
+                navigate(`/error/${status}`);
             }
         };
         fetchAllJobs();
-    }, [invalidateUser, user]);
+    }, [invalidateUser, user, navigate]);
 
     const onDelete = async (id) => {
         const { status } = await deleteJobById(id, user.token);
@@ -41,7 +43,7 @@ const Dashboard = () => {
         } else if (status === 401) {
             invalidateUser();
         } else {
-            alert("Error during deletion");
+            navigate(`/error/${status}`);
         }
     };
 
@@ -56,7 +58,7 @@ const Dashboard = () => {
         } else if (status === 401) {
             invalidateUser();
         } else {
-            alert("Error during creation");
+            navigate(`/error/${status}`);
         }
     };
 

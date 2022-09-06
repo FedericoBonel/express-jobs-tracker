@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Route,
+    Routes,
+    Navigate,
+} from "react-router-dom";
 import Cookies from "js-cookie";
 
 import {
@@ -10,7 +15,7 @@ import {
     PublicRoute,
     Login,
     Error,
-    Register
+    Register,
 } from "./pages";
 import { UserContext } from "./context/Context";
 import Layout from "./layout/Layout";
@@ -27,7 +32,7 @@ const App = () => {
         Cookies.remove("user");
         setUser();
     };
-    
+
     const validateUser = (user) => {
         Cookies.set("user", JSON.stringify(user));
         setUser(user);
@@ -50,7 +55,8 @@ const App = () => {
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
                     </Route>
-                    <Route path="*" element={<Error />} />
+                    <Route path="/error/:code" element={<Error />} />
+                    <Route path="*" element={<Navigate to={"/error/404"} />} />
                 </Routes>
             </UserContext.Provider>
         </Router>

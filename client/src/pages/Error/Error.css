@@ -1,0 +1,35 @@
+.container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-card {
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px lightgray;
+}
+
+.error-title {
+    font-size: 3rem;
+    margin: 8px;
+}
+
+.error-description {
+    font-size: 2rem;
+    margin: 16px;
+}
+
+.error-back {
+    font-size: 1rem;
+}
+
+.error-back a {
+    color: #936fdc;
+    text-decoration: none;
+    font-weight: 700;
+}
