@@ -1,0 +1,41 @@
+.container__jobform {
+    width: 90%;
+    padding: 40px;
+    margin: 40px;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0px 0px 10px lightgray;
+}
+
+.jobform__user-input {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    margin: 16px;
+}
+
+.jobform__user-input label {
+    font-size: 1rem;
+    margin: 8px;
+}
+
+.jobform__user-input input {
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 8px;
+}
+
+.jobform__submit-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #936fdc;
+    color: white;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.jobform__submit-btn:hover {
+    filter: brightness(1.1);
+}

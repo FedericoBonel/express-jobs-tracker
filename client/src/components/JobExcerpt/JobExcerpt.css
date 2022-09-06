@@ -1,0 +1,65 @@
+
+.joblist__item {
+    position: relative;
+    padding: 16px;
+    border-radius: 4px;
+    width: 250px;
+    box-shadow: 0px 0px 10px lightgray;
+}
+
+.joblist__item h3 {
+    font-weight: 400;
+    margin: 8px 0 0 0;
+}
+
+.joblist__item a {
+    text-decoration: none;
+}
+
+.joblist__item-date {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 0.7rem;
+    padding: 4px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #7352b6;
+    background: #d5caec;
+}
+
+.joblist__item-company {
+    width: fit-content;
+    margin: 8px 0 16px 0;
+    padding: 4px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 300;
+    background-color: lightgray;
+}
+
+.joblist__item-status {
+    margin: 0 0 8px 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #7352b6;
+}
+
+.joblist__item-inputrow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.joblist__item-editbtn {
+    color: green;
+    font-size: 0.9rem;
+}
+
+.joblist__item-deletebtn {
+    color: red;
+    background: none;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+}

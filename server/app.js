@@ -29,7 +29,7 @@ app.set("trust proxy", 1)
 app.use(
     rateLimit({
         windowMs: 15 * 1000 * 60, // 15 minutes
-        max: 70, // max number of requests per windowMs (15min)
+        max: 700, // max number of requests per windowMs (15min)
         standardHeaders: true,
         legacyHeaders: false,
     })
@@ -39,8 +39,8 @@ app.use(logger, express.json());
 
 // Security middleware
 app.use(helmet());
-app.use(cors());
 app.use(xss());
+app.use(cors());
 
 // Routes
 app.use(`${API_BASE_URL}/jobs`, jobsRoutes);

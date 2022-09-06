@@ -1,0 +1,26 @@
+import "./JobExcerpt.css";
+
+const JobExcerpt = ({ job, onDelete }) => {
+    const date = new Date(job.createdAt);
+    const stringDate = `${date.toUTCString().substring(0, 16)}`;
+
+    return (
+        <div className="joblist__item">
+            <p className="joblist__item-date">{stringDate}</p>
+            <h3>{job.position}</h3>
+            <p className="joblist__item-company">{job.company}</p>
+            <p className="joblist__item-status">{`${job.status.toUpperCase()}`}</p>
+            <div className="joblist__item-inputrow">
+                <a
+                    className="joblist__item-editbtn"
+                    href={`/jobs/edit/${job._id}`}
+                >
+                    Edit
+                </a>
+                <button className="joblist__item-deletebtn" onClick={onDelete}>Delete</button>
+            </div>
+        </div>
+    );
+};
+
+export default JobExcerpt;

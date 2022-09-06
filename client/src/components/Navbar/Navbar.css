@@ -1,0 +1,36 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid black;
+    background-color: white;
+}
+
+.navbar__right {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar__right-signout {
+    text-decoration: none;
+    margin: 0 0 0 16px;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    color: white;
+    background: black;
+    padding: 7px 14px;
+    transition: 0.3s;
+}
+
+.navbar__right-signout:hover {
+    color: black;
+    background: white;
+    border: 1px solid black;
+}
+
