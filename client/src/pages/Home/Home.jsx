@@ -6,20 +6,26 @@ import briefcase from "../../assets/images/main.svg";
 import { UserContext } from "../../context/Context";
 
 const Home = () => {
-    const {user} = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     const homePage = (
         <div className="container">
             <div className="container-card">
                 <div className="container__text">
                     <h1>Job Tracker</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Sed cras ornare arcu dui. Nibh mauris
-                        cursus mattis molestie a iaculis. Praesent tristique
-                        magna sit amet purus. In massa tempor nec feugiat nisl
-                        pretium fusce.
+                    <p className="container__description">
+                        Have you ever applied to so many different jobs and
+                        internships that you lost track of which ones were
+                        pending, which ones were declined, and when did you
+                        apply to one or another? If so, you are in the right
+                        place, this website allows you to keep track and
+                        organize all your jobs applications in a simple and
+                        minimalistic manner. 
+                        {`\n`}
+                        This way, if you ever feel lost or
+                        you don't remember if you already applied for a specific
+                        company you can always look back at all your previous
+                        submissions!
                     </p>
                     <Link className="container__login-btn" to="/login">
                         Sign in
