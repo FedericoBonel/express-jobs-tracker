@@ -31,7 +31,7 @@ const Register = () => {
 
         setRegisterForm((prevForm) => ({ ...prevForm, status: "loading" }));
 
-        const { data, status } = await registerUser({
+        const { status } = await registerUser({
             email: registerForm.email,
             password: registerForm.password,
             name: registerForm.name,

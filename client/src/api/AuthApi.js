@@ -1,4 +1,4 @@
-const AUTH_URI = "http://localhost:5000/api/v1/auth";
+const AUTH_URI = `${process.env.REACT_APP_BACKEND_URI}/auth`;
 
 /**
  * Authenticates user information and returns response status and response payload

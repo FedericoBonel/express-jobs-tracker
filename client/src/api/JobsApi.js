@@ -1,4 +1,4 @@
-const JOBS_URI = "http://localhost:5000/api/v1/jobs";
+const JOBS_URI = `${process.env.REACT_APP_BACKEND_URI}/jobs`;
 
 const getAllJobs = async (token) => {
     try {
