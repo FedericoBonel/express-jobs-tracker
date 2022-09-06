@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import "./Register.css";
 import { registerUser } from "../../api/AuthApi";
 
 const Register = () => {
@@ -38,7 +39,7 @@ const Register = () => {
 
         if (status === 201) {
             setRegisterForm({
-                status: "idle",
+                status: "success",
                 email: "",
                 password: "",
                 confirmPassword: "",
@@ -56,7 +57,7 @@ const Register = () => {
 
     return (
         <div className="container">
-            <form className="container__login-form">
+            <form className="container__signup-form">
                 <h1>Sign Up</h1>
                 <div className="user-input">
                     <label htmlFor="name">Name:</label>
@@ -110,7 +111,7 @@ const Register = () => {
                     Sign Up
                 </button>
 
-                <p className="form-signup-btn">
+                <p className="form-signin-btn">
                     or <Link to="/login">Sign in</Link>
                 </p>
 
@@ -122,6 +123,15 @@ const Register = () => {
 
                 {registerForm.status === "error" && (
                     <div>An error occurred! Please refresh and try again</div>
+                )}
+
+                {registerForm.status === "success" && (
+                    <div>
+                        <p>
+                            Your user has been registered, please{" "}
+                            <Link to="/login">Sign in</Link> to continue
+                        </p>
+                    </div>
                 )}
             </form>
         </div>
