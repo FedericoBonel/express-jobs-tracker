@@ -8,7 +8,7 @@ import { UserContext } from "../../context/Context";
  * otherwise redirect to the home page
  */
 const PublicRoute = () => {
-    const {user} = useContext(UserContext);
+    const { user } = useContext(UserContext);
     return user ? <Navigate to="/" /> : <Outlet />;
 };
 
