@@ -34,7 +34,7 @@ const App = () => {
     };
 
     const validateUser = (user) => {
-        Cookies.set("user", JSON.stringify(user));
+        Cookies.set("user", JSON.stringify(user), { expires: 7 });
         setUser(user);
     };
 
