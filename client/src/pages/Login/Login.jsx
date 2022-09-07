@@ -47,7 +47,7 @@ const Login = () => {
     };
 
     return (
-        <div className="container">
+        <main className="container">
             <form className="container__login-form">
                 <h1>Sign in</h1>
                 <div className="user-input">
@@ -58,6 +58,7 @@ const Login = () => {
                         name="email"
                         value={loginForm.email}
                         onChange={onType}
+                        placeholder="your@email.com"
                     />
                 </div>
 
@@ -93,7 +94,7 @@ const Login = () => {
                     <div>An error occurred! Please refresh and try again</div>
                 )}
             </form>
-        </div>
+        </main>
     );
 };
 

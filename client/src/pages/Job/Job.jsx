@@ -1,5 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDharmachakra } from "@fortawesome/free-solid-svg-icons";
 
 import { getJobById } from "../../api/JobsApi";
 import { UserContext } from "../../context/Context";
@@ -33,7 +35,6 @@ const Job = () => {
     }, [id, user, invalidateUser, navigate]);
 
     const onSubmit = async (update) => {
-
         const { status } = await updateJob(
             id,
             {
@@ -55,10 +56,19 @@ const Job = () => {
     };
 
     return (
-        <div className="container">
-            {job.status === "loading" && "loading"}
-            {job.status === "idle" && <JobForm onCreate={onSubmit} job={job.data}/>}
-        </div>
+        <main className="container">
+            {job.status === "loading" && (
+                <FontAwesomeIcon
+                    icon={faDharmachakra}
+                    spin
+                    size="5x"
+                    className="dashboard-loading"
+                />
+            )}
+            {job.status === "idle" && (
+                <JobForm onCreate={onSubmit} job={job.data} />
+            )}
+        </main>
     );
 };
 

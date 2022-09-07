@@ -68,7 +68,12 @@ const Dashboard = () => {
         <main className="container__dashboard">
             <JobForm onCreate={onCreate} />
             {jobs.status === "loading" && (
-                <FontAwesomeIcon icon={faDharmachakra} spin size="5x" className="dashboard-loading"/>
+                <FontAwesomeIcon
+                    icon={faDharmachakra}
+                    spin
+                    size="5x"
+                    className="dashboard-loading"
+                />
             )}
             {jobs.status === "idle" && (
                 <JobList jobs={jobs.data} onDelete={onDelete} />

@@ -9,7 +9,7 @@ const Home = () => {
     const { user } = useContext(UserContext);
 
     const homePage = (
-        <div className="container__home">
+        <main className="container__home">
             <div className="container__home-card">
                 <div className="container__home-text">
                     <h1>Job Tracker</h1>
@@ -36,7 +36,7 @@ const Home = () => {
                 </div>
                 <img className="container__icon" src={briefcase} alt="icon" />
             </div>
-        </div>
+        </main>
     );
 
     return (

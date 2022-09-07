@@ -56,7 +56,7 @@ const Register = () => {
     };
 
     return (
-        <div className="container">
+        <main className="container">
             <form className="container__signup-form">
                 <h1>Sign Up</h1>
                 <div className="user-input">
@@ -67,6 +67,7 @@ const Register = () => {
                         name="name"
                         value={registerForm.name}
                         onChange={onChange}
+                        placeholder="Luna Smith"
                     />
                 </div>
 
@@ -78,6 +79,7 @@ const Register = () => {
                         name="email"
                         value={registerForm.email}
                         onChange={onChange}
+                        placeholder="your@email.com"
                     />
                 </div>
 
@@ -134,7 +136,7 @@ const Register = () => {
                     </div>
                 )}
             </form>
-        </div>
+        </main>
     );
 };
 

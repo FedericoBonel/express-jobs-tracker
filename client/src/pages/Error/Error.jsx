@@ -24,15 +24,15 @@ const Error = () => {
     };
 
     return (
-        <div className="container">
+        <main className="container">
             <div className="error-card">
             <h1 className="error-title">Error!</h1>
             {errorToRender(code)}
             <p className="error-back">
-                <Link to={"/"}>Click here</Link> to go back home
+                <Link to={"/"}>Go back home</Link>.
             </p>
             </div>
-        </div>
+        </main>
     );
 };
 
