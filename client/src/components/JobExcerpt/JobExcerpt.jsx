@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { Link } from "react-router-dom";
 
 import "./JobExcerpt.css";
 
@@ -13,13 +14,15 @@ let JobExcerpt = ({ job, onDelete }) => {
             <p className="joblist__item-company">{job.company}</p>
             <p className="joblist__item-status">{`${job.status.toUpperCase()}`}</p>
             <div className="joblist__item-inputrow">
-                <a
+                <Link
                     className="joblist__item-editbtn"
-                    href={`/jobs/edit/${job._id}`}
+                    to={`/jobs/edit/${job._id}`}
                 >
                     Edit
-                </a>
-                <button className="joblist__item-deletebtn" onClick={onDelete}>Delete</button>
+                </Link>
+                <button className="joblist__item-deletebtn" onClick={onDelete}>
+                    Delete
+                </button>
             </div>
         </div>
     );

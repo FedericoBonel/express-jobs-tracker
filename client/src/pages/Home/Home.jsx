@@ -9,11 +9,11 @@ const Home = () => {
     const { user } = useContext(UserContext);
 
     const homePage = (
-        <div className="container">
-            <div className="container-card">
-                <div className="container__text">
+        <div className="container__home">
+            <div className="container__home-card">
+                <div className="container__home-text">
                     <h1>Job Tracker</h1>
-                    <p className="container__description">
+                    <p className="container__home-description">
                         Have you ever applied to so many different jobs and
                         internships that you lost track of which ones were
                         pending, which ones were declined, and when did you
@@ -27,10 +27,10 @@ const Home = () => {
                         company you can always look back at all your previous
                         submissions!
                     </p>
-                    <Link className="container__login-btn" to="/login">
+                    <Link className="container__home-login" to="/login">
                         Sign in
                     </Link>
-                    <Link className="container__signup-btn" to="/register">
+                    <Link className="container__home-signup" to="/register">
                         Sign up
                     </Link>
                 </div>

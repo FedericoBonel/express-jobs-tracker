@@ -8,6 +8,15 @@
     padding: 20px;
     border-bottom: 1px solid black;
     background-color: white;
+    z-index: 1;
+}
+
+.navbar a {
+    text-decoration: none;
+}
+
+.navbar__left-icon {
+    color: black;
 }
 
 .navbar__right {
@@ -18,7 +27,6 @@
 }
 
 .navbar__right-signout {
-    text-decoration: none;
     margin: 0 0 0 16px;
     border: 1px solid transparent;
     border-radius: 30px;
@@ -34,3 +42,8 @@
     border: 1px solid black;
 }
 
+@media screen and (max-width: 436px) {
+    .navbar__right-message {
+        display: none;
+    }
+}

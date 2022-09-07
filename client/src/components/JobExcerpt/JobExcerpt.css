@@ -1,9 +1,11 @@
 
 .joblist__item {
+    margin: auto;
     position: relative;
     padding: 16px;
     border-radius: 4px;
-    width: 250px;
+    width: 100%;
+    max-width: 300px;
     box-shadow: 0px 0px 10px lightgray;
 }
 

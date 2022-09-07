@@ -1,6 +1,24 @@
 .joblist__container {
+    margin: 32px;
     display: grid;
     gap: 16px;
     grid-template-columns: repeat(4, 1fr);
 }
 
+@media screen and (max-width: 1074px) {
+    .joblist__container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 824px) {
+    .joblist__container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .joblist__container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

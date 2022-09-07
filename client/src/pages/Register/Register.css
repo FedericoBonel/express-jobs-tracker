@@ -70,3 +70,9 @@
     border-radius: 16px;
     background-color: #ff7363;
 }
+
+@media screen and (max-width: 376px) {
+    .container__signup-form h1 {
+        font-size: 2rem;
+    }
+}

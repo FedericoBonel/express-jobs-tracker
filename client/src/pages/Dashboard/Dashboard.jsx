@@ -1,5 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDharmachakra } from "@fortawesome/free-solid-svg-icons";
 
 import "./Dashboard.css";
 import { UserContext } from "../../context/Context";
@@ -63,9 +65,11 @@ const Dashboard = () => {
     };
 
     return (
-        <main className="container">
+        <main className="container__dashboard">
             <JobForm onCreate={onCreate} />
-            {jobs.status === "loading" && "Loading"}
+            {jobs.status === "loading" && (
+                <FontAwesomeIcon icon={faDharmachakra} spin size="5x" className="dashboard-loading"/>
+            )}
             {jobs.status === "idle" && (
                 <JobList jobs={jobs.data} onDelete={onDelete} />
             )}

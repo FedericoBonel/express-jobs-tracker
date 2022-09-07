@@ -22,6 +22,9 @@ const JobForm = ({ onCreate, job }) => {
         }));
     };
 
+    const canSubmit =
+        Boolean(jobForm.data.company) && Boolean(jobForm.data.position);
+
     const onSubmit = async (e) => {
         e.preventDefault();
 
@@ -88,7 +91,7 @@ const JobForm = ({ onCreate, job }) => {
                         </select>
                     </div>
                 )}
-                <button className="jobform__submit-btn" onClick={onSubmit}>
+                <button className="jobform__submit-btn" onClick={onSubmit} disabled={!canSubmit}>
                     Submit
                 </button>
             </form>

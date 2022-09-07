@@ -1,7 +1,10 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+.container__dashboard {
+    margin: 32px 0;
+    min-height: 100vh;
+}
+
+.dashboard-loading{
+    margin: 32px auto;
+    width: 100%;
+    color: #593e8f;
 }

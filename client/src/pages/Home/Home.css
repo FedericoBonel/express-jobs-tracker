@@ -1,4 +1,4 @@
-.container {
+.container__home {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,7 +6,7 @@
     height: 100vh;
 }
 
-.container-card {
+.container__home-card {
     width: 90%;
     max-width: 800px;
     display: flex;
@@ -18,7 +18,7 @@
     padding: 50px;
 }
 
-.container__text {
+.container__home-text {
     margin: 0 20px;
     display: flex;
     flex-direction: column;
@@ -27,20 +27,20 @@
     justify-content: center;
 }
 
-.container__text h1 {
+.container__home-text h1 {
     margin: 4px;
     font-size: 3rem;
 }
 
-.container__text p {
+.container__home-text p {
     margin: 8px 0;
 }
 
-.container__description {
+.container__home-description {
     white-space: pre-wrap;
 }
 
-.container__text a {
+.container__home-text a {
     text-decoration: none;
 }
 
@@ -48,7 +48,7 @@
     object-fit: fill;
     max-height: 200px;
 }
-.container__login-btn {
+.container__home-login {
     margin: 20px;
     padding: 10px 20px;
     font-size: 2rem;
@@ -59,13 +59,37 @@
     transition: 0.3s;
 }
 
-.container__login-btn:hover {
+.container__home-login:hover {
     background: white;
     border: 1px solid black;
     color: black;
 }
 
-.container__signup-btn {
+.container__home-signup {
     font-size: 1.3rem;
     color: #936fdc;
+}
+
+@media screen and (max-width: 1000px) {
+    .container__home-card {
+        flex-direction: column;
+    }
+
+    .container__icon {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .container__home-text h1 {
+        font-size: 2rem;
+    }
+
+    .container__home-login {
+        font-size: 1.5rem
+    }
+
+    .container__home-signup {
+        font-size: 1.5rem;
+    }
 }

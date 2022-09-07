@@ -1,7 +1,7 @@
 .container__jobform {
     width: 90%;
     padding: 40px;
-    margin: 40px;
+    margin: auto;
     max-width: 450px;
     text-align: center;
     box-shadow: 0px 0px 10px lightgray;
@@ -34,6 +34,11 @@
     font-size: 1.3rem;
     transition: 0.3s;
     cursor: pointer;
+}
+
+.jobform__submit-btn:disabled {
+    pointer-events: none;
+    filter: opacity(0.5);
 }
 
 .jobform__submit-btn:hover {

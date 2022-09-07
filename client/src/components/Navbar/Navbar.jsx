@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 import "./Navbar.css";
 
 const Navbar = ({ user, onLogout }) => {
@@ -10,9 +12,9 @@ const Navbar = ({ user, onLogout }) => {
 
     return (
         <nav className="navbar">
-            <h1>Job Tracker</h1>
+            <h1><Link className="navbar__left-icon" to="/">Job Tracker</Link></h1>
             <div className="navbar__right">
-                <p>Hello {user.name}</p>
+                <p className="navbar__right-message">Hello {user.name}</p>
                 <a
                     className="navbar__right-signout"
                     href="/"
