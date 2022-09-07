@@ -52,6 +52,11 @@
     cursor: pointer;
 }
 
+.form-submit-btn:disabled {
+    filter: opacity(0.5);
+    pointer-events: none;
+}
+
 .form-submit-btn:hover {
     filter: brightness(1.1);
 }

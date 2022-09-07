@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDharmachakra } from "@fortawesome/free-solid-svg-icons";
 
 import "./Register.css";
 import { registerUser } from "../../api/AuthApi";
@@ -91,6 +93,7 @@ const Register = () => {
                         name="password"
                         value={registerForm.password}
                         onChange={onChange}
+                        placeholder="password..."
                     />
                 </div>
 
@@ -102,6 +105,7 @@ const Register = () => {
                         name="confirmPassword"
                         value={registerForm.confirmPassword}
                         onChange={onChange}
+                        placeholder="repeat password..."
                     />
                 </div>
 
@@ -117,6 +121,10 @@ const Register = () => {
                     or <Link to="/login">Sign in</Link>
                 </p>
 
+                {registerForm.status === "loading" && (
+                    <FontAwesomeIcon icon={faDharmachakra} spin size="5x" />
+                )}
+
                 {registerForm.status === "rejected" && (
                     <div className="error-div">
                         User with that email already exists
@@ -130,8 +138,8 @@ const Register = () => {
                 {registerForm.status === "success" && (
                     <div>
                         <p>
-                            Your user has been registered, please{" "}
-                            <Link to="/login">Sign in</Link> to continue
+                            Your email has been registered, please{" "}
+                            <Link to="/login">sign in</Link> to continue
                         </p>
                     </div>
                 )}

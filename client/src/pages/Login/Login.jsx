@@ -1,5 +1,7 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDharmachakra } from "@fortawesome/free-solid-svg-icons";
 
 import "./Login.css";
 import { authenticate } from "../../api/AuthApi";
@@ -19,6 +21,8 @@ const Login = () => {
             [e.target.name]: e.target.value,
         }));
     };
+
+    const canSubmit = Boolean(loginForm.email) && Boolean(loginForm.password)
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -70,19 +74,21 @@ const Login = () => {
                         name="password"
                         value={loginForm.password}
                         onChange={onType}
+                        placeholder="password..."
                     />
                 </div>
 
-                <button className="form-submit-btn" onClick={onSubmit}>
+                <button className="form-submit-btn" onClick={onSubmit} disabled={!canSubmit}>
                     Sign in
                 </button>
 
-                <p className="form-signup-btn" >
-                    or{" "}
-                    <Link to="/register">
-                        Sign up
-                    </Link>
+                <p className="form-signup-btn">
+                    or <Link to="/register">Sign up</Link>
                 </p>
+
+                {loginForm.status === "loading" && (
+                    <FontAwesomeIcon icon={faDharmachakra} spin size="5x" />
+                )}
 
                 {loginForm.status === "rejected" && (
                     <div className="error-div">
